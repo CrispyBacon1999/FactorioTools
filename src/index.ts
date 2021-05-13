@@ -14,9 +14,7 @@ import {
 import { type } from "os";
 import { write, writeFileSync } from "fs";
 
-const data = parse(
-  "E:/SteamLibrary/steamapps/common/Factorio/data/base/prototypes/item.lua"
-);
+const data = parse("./data/recipe.lua");
 
 function find_data_extension(data: Chunk) {
   for (var i = 0; i < data.body.length; i++) {
