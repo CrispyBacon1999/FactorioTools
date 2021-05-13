@@ -47,10 +47,11 @@ function tableRowToJson(row: TableConstructorExpression) {
     // console.log(
     //   ((item as TableValue).value as TableConstructorExpression).fields
     // );
-    const itemJson: { [key: string]: string | number | boolean } = {};
+    const itemJson: { [key: string]: string | number | boolean | any } = {};
     ((item as TableValue).value as TableConstructorExpression).fields.forEach(
       (field) => {
         if (field.type === "TableKeyString") {
+          console.log(field.value.type);
           if (field.value.type == "StringLiteral") {
             itemJson[field.key.name] = field.value.raw.replace(/"/g, "");
           }
@@ -59,6 +60,11 @@ function tableRowToJson(row: TableConstructorExpression) {
           }
           if (field.value.type == "NumericLiteral") {
             itemJson[field.key.name] = field.value.value;
+          }
+          if (field.value.type == "TableConstructorExpression") {
+            console.log(field.value);
+            console.log(itemJson);
+            itemJson[field.key.name] = tableRowToJson(field.value);
           }
         }
       }
