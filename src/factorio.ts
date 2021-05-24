@@ -1,4 +1,4 @@
-interface IItemProps {
+export interface IItemProps {
   type: string;
   name: string;
   icon: string | undefined;
@@ -13,7 +13,7 @@ interface IItemProps {
   fuel_value: string | undefined;
 }
 
-interface Picture {
+export interface Picture {
   size: number;
   filename: string;
   scale: number;
@@ -52,7 +52,7 @@ export class Item {
   }
 }
 
-interface IItemAsTileProps {
+export interface IItemAsTileProps {
   result: string;
   condition_size: number;
   condition: [string];
@@ -61,3 +61,30 @@ interface IItemAsTileProps {
 export class ItemAsTile {
   constructor(props: IItemAsTileProps) {}
 }
+
+export interface IRecipe {
+  type: "recipe";
+  name: string;
+  enabled: boolean | undefined;
+  ingredients: { [key: string]: IRecipeIngredient } | undefined;
+  energy_required: number | undefined;
+  result: string;
+  result_count: number | undefined;
+  results: IRecipeResults;
+  normal: IRecipe | undefined;
+  expensive: IRecipe | undefined;
+}
+
+export interface IRecipeIngredient {
+  name: string;
+  quantity: number;
+  type: "item" | "fluid";
+  fluidbox_index: number;
+}
+export interface IRecipeResults {
+  type: "fluid" | "item";
+  name: string;
+  amount: number;
+}
+
+export type RecipeBook = { [key: string]: IRecipe };
