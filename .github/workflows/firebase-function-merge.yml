@@ -2,6 +2,8 @@ name: Deploy to Firebase Functions on merge
 
 "on":
   push:
+    paths:
+      - "functions/*"
     branches:
       - main
 jobs:
