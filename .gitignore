@@ -6,3 +6,7 @@ yarn-error.log
 *.log
 .DS_STORE
 out
+
+.next
+.firebase
+.vscode
