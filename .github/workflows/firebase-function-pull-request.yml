@@ -3,6 +3,7 @@ name: Deploy to Firebase Functions on merge
   pull_request:
     paths:
       - "functions"
+      - ".github/workflows"
 jobs:
   build_and_preview:
     if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"

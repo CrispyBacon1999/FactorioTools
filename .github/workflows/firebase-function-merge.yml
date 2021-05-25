@@ -4,6 +4,7 @@ name: Deploy to Firebase Functions on merge
   push:
     paths:
       - "functions"
+      - ".github/workflows"
     branches:
       - main
 jobs:
