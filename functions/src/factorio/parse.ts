@@ -42,6 +42,8 @@ function find_data_extension(data: Chunk) {
     }
     continue;
   }
+
+  return undefined;
 }
 
 function tableRowToJson(row: TableConstructorExpression) {
