@@ -10,6 +10,7 @@ import { parseLuaFileData } from "./factorio/parse";
 // });
 
 export const parseFile = functions.https.onRequest((request, response) => {
+  response.status(200).send();
   const modid = request.query.modid;
   const type = request.query.type;
   const fileData = request.body.text;
