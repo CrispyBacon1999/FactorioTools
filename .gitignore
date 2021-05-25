@@ -4,5 +4,5 @@ data/*.json
 
 yarn-error.log
 *.log
-public
 .DS_STORE
+out

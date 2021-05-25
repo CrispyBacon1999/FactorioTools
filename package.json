@@ -1,27 +1,21 @@
 {
-  "name": "factorio-parser",
+  "name": "factorio-tools",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "@types/luaparse": "^0.2.7",
-    "@types/node": "^15.0.3",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start"
   },
   "dependencies": {
-    "firebase-admin": "^9.8.0",
-    "nodemon": "^2.0.7"
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
-  "scripts": {
-    "dev:parse": "ts-node src/parse.ts",
-    "dev:layout": "ts-node src/layout.ts",
-    "dev:database": "ts-node src/database.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "parse:recipe": "node dist/parse.js ./data/recipe.lua",
-    "parse:item": "node dist/parse.js ./data/item.lua",
-    "parse:fluid": "node dist/parse.js ./data/fluid.lua",
-    "parse": "npm run parse:recipe && npm run parse:item && npm run parse:fluid"
+  "devDependencies": {
+    "@types/react": "^17.0.7",
+    "typescript": "^4.2.4"
   }
 }
