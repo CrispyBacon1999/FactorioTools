@@ -3,6 +3,6 @@ dist
 data/*.json
 
 yarn-error.log
-firebase-debug.log
+*.log
 public
 .DS_STORE
