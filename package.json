@@ -10,14 +10,20 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "graph-data-structure": "^1.14.0",
+    "firebase-admin": "^9.8.0",
+    "graph-data-structure": "^2.0.0",
     "luaparse": "^0.3.0",
     "nodemon": "^2.0.7"
   },
   "scripts": {
     "dev:parse": "ts-node src/parse.ts",
     "dev:layout": "ts-node src/layout.ts",
+    "dev:database": "ts-node src/database.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "parse:recipe": "node dist/parse.js ./data/recipe.lua",
+    "parse:item": "node dist/parse.js ./data/item.lua",
+    "parse:fluid": "node dist/parse.js ./data/fluid.lua",
+    "parse": "npm run parse:recipe && npm run parse:item && npm run parse:fluid"
   }
 }

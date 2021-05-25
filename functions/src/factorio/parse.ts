@@ -14,10 +14,14 @@ import {
 import { type } from "os";
 import { write, writeFileSync } from "fs";
 import { parse as dpParse } from "path";
+import luaparse from "luaparse";
 
-const dataFileName = "./data/recipe.lua";
+// const args = process.argv.slice(2);
 
-const data = parse(dataFileName);
+// const dataFileName = "./data/recipe.lua";
+// const dataFileName = args[0];
+
+// const data = parse(dataFileName);
 
 function find_data_extension(data: Chunk) {
   for (var i = 0; i < data.body.length; i++) {
@@ -39,8 +43,6 @@ function find_data_extension(data: Chunk) {
     continue;
   }
 }
-
-const dataTable = find_data_extension(data);
 
 function tableRowToJson(row: TableConstructorExpression) {
   const jsonOut: {
@@ -69,9 +71,6 @@ function tableRowToJson(row: TableConstructorExpression) {
         const field = ((item as TableValue).value as TableConstructorExpression)
           .fields[j];
         if (field.type === "TableKeyString") {
-          if (field.key.name === "normal") {
-            console.log("AAAAAAAAAA");
-          }
           // console.log(field.value.type);
           if (field.value.type == "StringLiteral") {
             itemJson[field.key.name] = field.value.raw.replace(/"/g, "");
@@ -123,7 +122,6 @@ function tableRowToJson(row: TableConstructorExpression) {
       }
       // );
     } else {
-      console.log("AAa");
       if (item.type === "TableKeyString") {
         if (item.value.type === "StringLiteral") {
           jsonOut[item.key.name] = item.value.raw.replace(/"/g, "");
@@ -140,25 +138,37 @@ function tableRowToJson(row: TableConstructorExpression) {
   }
   return jsonOut;
 }
-console.log("Starting parse of %s", dataFileName);
-const time1 = new Date().getTime();
-if (dataTable !== undefined) {
-  const row = dataTable[0];
-  const table = tableRowToJson(row);
-  // console.log(table);
-  const names: Set<string> = new Set();
-  Object.values(table).forEach((item) => {
-    Object.keys(item).forEach((key) => {
-      if (!(key in names)) {
-        names.add(key);
-      }
-    });
-  });
-  // console.log(names);
-  const outputFileName = `./data/${dpParse(dataFileName).name}.json`;
-  console.log(
-    `Parsed data file in %d ms, written to ${outputFileName}`,
-    new Date().getTime() - time1
-  );
-  writeFileSync(outputFileName, JSON.stringify(table, null, 2));
+
+export function parseLuaFileData(text: string) {
+  const data = luaparse(text);
+  const dataTable = find_data_extension(data);
+  if (dataTable !== undefined) {
+    const row = dataTable[0];
+    const table = tableRowToJson(row);
+    return table;
+  }
+  return null;
 }
+
+// console.log("Starting parse of %s", dataFileName);
+// const time1 = new Date().getTime();
+// if (dataTable !== undefined) {
+//   const row = dataTable[0];
+//   const table = tableRowToJson(row);
+//   // console.log(table);
+//   const names: Set<string> = new Set();
+//   Object.values(table).forEach((item) => {
+//     Object.keys(item).forEach((key) => {
+//       if (!(key in names)) {
+//         names.add(key);
+//       }
+//     });
+//   });
+//   // console.log(names);
+//   const outputFileName = `./data/${dpParse(dataFileName).name}.json`;
+//   console.log(
+//     `Parsed data file in %d ms, written to ${outputFileName}`,
+//     new Date().getTime() - time1
+//   );
+//   writeFileSync(outputFileName, JSON.stringify(table, null, 2));
+// }
