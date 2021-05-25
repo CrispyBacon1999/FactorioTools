@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "firebase-admin": "^9.8.0",
-    "graph-data-structure": "^2.0.0",
-    "luaparse": "^0.3.0",
     "nodemon": "^2.0.7"
   },
   "scripts": {
