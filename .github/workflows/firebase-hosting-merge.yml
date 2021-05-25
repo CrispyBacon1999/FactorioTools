@@ -4,6 +4,14 @@
 name: Deploy to Firebase Hosting on merge
 "on":
   push:
+    paths:
+      - "src"
+      - "public"
+      - "package.json"
+      - "package-lock.json"
+      - "firebase.json"
+      - "tsconfig.json"
+      - ".github/workflows"
     branches:
       - main
 jobs:
