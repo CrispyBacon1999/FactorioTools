@@ -5,3 +5,4 @@ data/*.json
 yarn-error.log
 firebase-debug.log
 public
+.DS_STORE
