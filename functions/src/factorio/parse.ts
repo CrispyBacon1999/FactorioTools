@@ -140,7 +140,7 @@ function tableRowToJson(row: TableConstructorExpression) {
 }
 
 export function parseLuaFileData(text: string) {
-  const data = luaparse(text);
+  const data = luaparse.parse(text);
   const dataTable = find_data_extension(data);
   if (dataTable !== undefined) {
     const row = dataTable[0];
