@@ -118,7 +118,7 @@ export default function FullNavbar(props: any) {
     <div>
       <div className={classes.root}>
         <AppBar
-          position="static"
+          position='static'
           className={clsx(classes.appBar, {
             [classes.appBarShift]: sidebarIsOpen,
           })}
@@ -129,15 +129,15 @@ export default function FullNavbar(props: any) {
               {...(!sidebarIsOpen ? { timeout: 750 } : { timeout: 350 })}
             >
               <IconButton
-                edge="start"
+                edge='start'
                 className={classes.menuButton}
-                color="inherit"
+                color='inherit'
                 onClick={handleDrawerOpen}
               >
                 <MenuIcon />
               </IconButton>
             </Grow>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant='h6' className={classes.title}>
               Factorio Tools
             </Typography>
             <div className={classes.search}>
@@ -145,7 +145,7 @@ export default function FullNavbar(props: any) {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search..."
+                placeholder='Search...'
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,

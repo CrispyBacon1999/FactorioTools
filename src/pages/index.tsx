@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 
 const Index = () => (
   <Container>
-    <Typography component="h2">Home page</Typography>
+    <Typography component='h2'>Home page</Typography>
   </Container>
 );
 

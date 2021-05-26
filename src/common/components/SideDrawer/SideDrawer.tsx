@@ -74,8 +74,8 @@ export default function SideDrawer({ open, setOpen }: ISideDrawerProps) {
   return (
     <Drawer
       className={classes.drawer}
-      variant="persistent"
-      anchor="left"
+      variant='persistent'
+      anchor='left'
       open={open}
       classes={{
         paper: classes.drawerPaper,
